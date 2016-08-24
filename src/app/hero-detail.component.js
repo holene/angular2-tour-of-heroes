@@ -9,13 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var app_component_1 = require("./app.component");
+var heroes_component_1 = require("./heroes.component");
 var HeroDetailComponent = (function () {
     function HeroDetailComponent() {
     }
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', (typeof (_a = typeof app_component_1.Hero !== 'undefined' && app_component_1.Hero) === 'function' && _a) || Object)
+        __metadata('design:type', (typeof (_a = typeof heroes_component_1.Hero !== 'undefined' && heroes_component_1.Hero) === 'function' && _a) || Object)
     ], HeroDetailComponent.prototype, "hero", void 0);
     HeroDetailComponent = __decorate([
         core_1.Component({
