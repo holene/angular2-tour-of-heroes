@@ -1,22 +1,8 @@
 // One or more import statements to reference the things we need. Whatever that may be...
-import { Component  } from '@angular/core';
-import { Hero } from "./hero";
-/* Angular apps are modular. When we need something from a module or a library, we import it. Here we import the Angular 2 core, so that our component code can have access to the @Component decorator. Component is a decorator function that takes a metadata object as argument. The function is applied to the component class by prefixing the function with the @ symbol and invoking it with a metadata object, just above the class (AppComponent).
-*/
+import { Component, OnInit } from '@angular/core';
 
-// Creating HEROES, an array of type Hero
-const HEROES: Hero[] = [
-    {id: 11, name: 'Mr. Nice'},
-    {id: 12, name: 'Narco'},
-    {id: 13, name: 'Bombasto'},
-    {id: 14, name: 'Celeritas'},
-    {id: 15, name: 'Nagbeta'},
-    {id: 16, name: 'Rubberman'},
-    {id: 17, name: 'Dynama'},
-    {id: 18, name: 'Dr. IQ'},
-    {id: 19, name: 'Magma'},
-    {id: 20, name: 'Tornado'},
-];
+import { Hero } from "./hero";
+import { HeroService } from "./hero.service";
 
 @Component({
     selector: 'my-app',
@@ -76,21 +62,25 @@ const HEROES: Hero[] = [
             margin-right: .8em;
             border-radius: 4px 0 0 4px;
         }
-    `]
+    `],
+    providers: [HeroService]
 })
-/* @Component allows us to associate metadata with the component class. The metadata tells Angular how to create and use this component. This particular metadata object has two fields: a selector and a template.
-
-The selector specifies a simple CSS selector for an HTML element that represents the component. Angular creates and displays an instance of our AppComponent wherever it encounters a my-app element in the host HTML.
-
-The template specifies the component's companion template, written in an enhanced form of HTML that tells Angular  how to render this component's view. Our template is a single line of HTML announcing "My First Angular 2 App". A more advanced template could contain data bindings to component properties and might identify other application components which have their own templates, and so on. In this way an Angular application becomes a tree of components.
-*/
-
 
 // A component class that controls the appearance and behaviour of a view through its template
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'Tour of Heroes';
-    heroes = HEROES;
+    heroes: Hero[];
     selectedHero: Hero;
+
+    constructor(private heroService: HeroService) {}
+
+    getHeroes(): void {
+        this.heroes = this.heroService.getHeroes();
+        // this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    }
+    ngOnInit(): void{
+        this.getHeroes();
+    }
     onSelect(hero: Hero): void{
         this.selectedHero = hero;
     }
