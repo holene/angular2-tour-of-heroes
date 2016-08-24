@@ -1,20 +1,9 @@
 // One or more import statements to reference the things we need. Whatever that may be...
 import { Component  } from '@angular/core';
+import { Hero } from "./hero";
 /* Angular apps are modular. When we need something from a module or a library, we import it. Here we import the Angular 2 core, so that our component code can have access to the @Component decorator. Component is a decorator function that takes a metadata object as argument. The function is applied to the component class by prefixing the function with the @ symbol and invoking it with a metadata object, just above the class (AppComponent).
 */
 
-// @Component decorator that tells Angular what template to use and how to create the component.
-@Component({
-    selector: 'my-app',
-    template: `
-        
-    `
-})
-
-export class Hero {
-    id: number;
-    name: string;
-}
 // Creating HEROES, an array of type Hero
 const HEROES: Hero[] = [
     {id: 11, name: 'Mr. Nice'},
@@ -41,14 +30,7 @@ const HEROES: Hero[] = [
                 <span class="badge">{{hero.id}}</span> {{hero.name}}
             </li>
         </ul>
-        <div *ngIf="selectedHero">
-            <h2>{{selectedHero.name}} details!</h2>
-            <div><label>id: </label>{{selectedHero.id}}</div>
-            <div>
-                <label>name: </label>
-                <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-            </div>
-        </div>
+        <my-hero-detail [hero]="selectedHero"></my-hero-detail>
     `,
     styles: [`
         .selected {
