@@ -17,8 +17,9 @@ var AppComponent = (function () {
         this.title = 'Tour of Heroes';
     }
     AppComponent.prototype.getHeroes = function () {
-        this.heroes = this.heroService.getHeroes();
-        // this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+        var _this = this;
+        // this.heroes = this.heroService.getHeroes();
+        this.heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
     };
     AppComponent.prototype.ngOnInit = function () {
         this.getHeroes();
