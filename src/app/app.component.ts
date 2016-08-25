@@ -2,6 +2,7 @@
  * Created by holenaxe on 24.08.2016.
  */
 import { Component } from "@angular/core";
+import './rxjs-extensions';
 
 @Component({
     selector: 'my-app',

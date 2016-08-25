@@ -16,6 +16,7 @@ var HeroesComponent = (function () {
     function HeroesComponent(router, heroService) {
         this.router = router;
         this.heroService = heroService;
+        this.addingHero = false;
     }
     HeroesComponent.prototype.getHeroes = function () {
         var _this = this;

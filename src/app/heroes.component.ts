@@ -16,10 +16,12 @@ import { Router } from "@angular/router";
 export class HeroesComponent implements OnInit {
     heroes: Hero[];
     selectedHero: Hero;
+    addingHero = false;
+    error: any;
 
     constructor(
         private router: Router,
-        private heroService: HeroService,
+        private heroService: HeroService
     ) {}
 
     getHeroes(): void {
